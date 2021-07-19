@@ -1,11 +1,12 @@
 from flask import Flask , request
 import pymongo
 import json
+import os
 from bson.json_util import dumps
 
 
 app = Flask(__name__)
-myclient = pymongo.MongoClient("mongodb+srv://s1j2v326ari:s1j2v326ari@projects.luhuo.mongodb.net/drinks?retryWrites=true&w=majority")
+myclient = pymongo.MongoClient(f"{os.environ['DB_HOST']}:{os.environ['DB_PORT']}")
 mydb = myclient['drinks']
 mycol = mydb["drinksCol"]
 
